@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 
+import SearchBar from "./components/SearchBar/SearchBar.tsx";
+
 function App() {
   const [dataFromServer, setDataFromServer] = useState<string[]>([]);
 
@@ -23,13 +25,16 @@ function App() {
     fetchData();
   }, []);
 
-  
+
   
   
 
   return (
     <>
-      <div>HELLOOOOEEEEE</div>
+      <div>
+        <SearchBar dataFromServer={dataFromServer}/>
+        
+      </div>
     </>
   );
 }

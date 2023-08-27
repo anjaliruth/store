@@ -1,5 +1,41 @@
+/* productGrid component*/
+
+.productCard{
+  display: flex;
+  flex-direction: column;
+background-color: blue;
+border-radius: 3%;
+align-items: center;
+width: 80%;
+}
+
+.productCard img{
+width: 70%;
+border-radius: 3%;
+margin-top: 15%;
+
+}
 
 
+.productGrid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1rem;
+  width: 80%;
+  margin: 0 auto;
+}
 
+.productName{
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0.5rem 0;
+}
+
+/* SearchBar Component */
+.inputField{
+  width: 20%;
+  margin: 2rem auto;
+  display: flex;
+}
 
 
