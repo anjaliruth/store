@@ -23,7 +23,8 @@
 /* cartList component */
 .cartList {
   background-color: white; /* Apply white background only to the cartList */
-  border: 1px solid black;
+  border: 2px solid black;
+  border-radius: 4px;
   padding: 1rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   max-height: 400px; /* Add a max height for scrolling if needed */
@@ -80,6 +81,7 @@
   justify-content: space-between;
   gap: 1rem;
   padding: 1rem;
+  padding-bottom: 0;
   color: black;
   background-color: white;
 }
