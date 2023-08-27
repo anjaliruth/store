@@ -145,6 +145,12 @@
     margin-top: 15%;
   }
 /* SearchBar Component */
+
+.inputField{
+  border-radius: 10px;
+  padding: 10px;
+  border:none;
+}
 .inputField,
 .cart {
   width: 20%;
