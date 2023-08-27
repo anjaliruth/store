@@ -107,13 +107,11 @@
   justify-self: center; /* Center horizontally within the grid cell */
   align-self: center; 
   width: 70%;
+  padding: 0;
+  padding-bottom: 5%;
 }
 
-.productCard img {
-  width: 70%;
-  border-radius: 3%;
-  margin-top: 15%;
-}
+
 /* productGrid component*/
 .productGrid {
   display: grid;
@@ -123,7 +121,7 @@
   margin: 0 auto;
 
 }
-
+/* items on productCard */
 
 .productName {
   font-size: 1.5rem;
@@ -131,6 +129,21 @@
   margin: 0.5rem 0;
 }
 
+.price{
+  padding: 0;
+  margin: 0;
+}
+
+.addToCartButton{
+  padding-top:none;
+  margin-top: none;
+  }
+
+  .productCard img {
+    width: 70%;
+    border-radius: 3%;
+    margin-top: 15%;
+  }
 /* SearchBar Component */
 .inputField,
 .cart {

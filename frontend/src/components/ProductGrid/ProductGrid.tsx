@@ -12,9 +12,9 @@ console.log("Cart Items:", cartItems)
         <div key={item.id} className="productCard">
           <img src={item.image} alt={item.name} />
           <h1 className="productName">{item.name}</h1>
-          <h2>Price: £{item.price}</h2>
+          <h2 className="price"> £{item.price}</h2>
           <h3>{item.description}</h3>
-          <button className="addToCartButton" onClick={() => addToCart(item)}>Add to Cart</button>
+          <button className="addToCartButton" onClick={() => addToCart(item)}> + Add to Cart</button>
         </div>
       ))}
     </div>
