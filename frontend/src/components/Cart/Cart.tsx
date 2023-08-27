@@ -1,11 +1,12 @@
 import React from 'react'
 
-export default function Cart() {
+export default function Cart({cartItems}) {
   return (
-    <div className="cart">
+    <button className="cartButton">
         <span className="material-symbols-outlined">
 shopping_cart
 </span>
-    </div>
+<h3>{cartItems.length}</h3>
+    </button>
   )
 }

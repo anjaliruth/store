@@ -6,7 +6,7 @@ import Cart from "./components/Cart/Cart.tsx";
 
 function App() {
   const [dataFromServer, setDataFromServer] = useState<string[]>([]);
-
+const [cartItems, setCartItems] = useState<string[]>([]);
 
   console.log("Here it is:", dataFromServer)
   useEffect(() => {
@@ -33,8 +33,8 @@ function App() {
   return (
     <>
       <div className="customerDisplay">
-        <SearchBar dataFromServer={dataFromServer}/>
-        < Cart/>
+        <SearchBar dataFromServer={dataFromServer} cartItems={cartItems} setCartItems={setCartItems} />
+        <Cart cartItems={cartItems}/>
         
       </div>
     </>

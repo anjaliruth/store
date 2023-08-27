@@ -1,13 +1,11 @@
-import {useState} from 'react'
+import React from 'react';
 
-
-export default function ProductGrid({ filteredItems }) {
-const [cart, setCart] = useState([]);
-console.log("Cart:", cart)
+export default function ProductGrid({ filteredItems, cartItems, setCartItems }) {
   function addToCart(item) {
-setCart([...cart, item])
-    console.log("add to cart button works")
+    setCartItems([...cartItems, item]); // Update the cartItems state in the parent component
+    console.log("add to cart button works");
   }
+
   return (
     <div className="productGrid">
       {filteredItems.map((item) => (
@@ -16,7 +14,7 @@ setCart([...cart, item])
           <h1 className="productName">{item.name}</h1>
           <h2>Price: £{item.price}</h2>
           <h3>{item.description}</h3>
-          <button className="addToCartButton" onClick={()=> addToCart(item)}>Add to Cart</button>
+          <button className="addToCartButton" onClick={() => addToCart(item)}>Add to Cart</button>
         </div>
       ))}
     </div>
