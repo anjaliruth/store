@@ -1,3 +1,13 @@
+/* main-container component */
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+
 /* customerDisplay */
 .customerDisplay {
   display: flex;
@@ -94,6 +104,8 @@
   color: black;
   border-radius: 3%;
   align-items: center;
+  justify-self: center; /* Center horizontally within the grid cell */
+  align-self: center; 
   width: 70%;
 }
 
@@ -109,7 +121,9 @@
   grid-gap: 1rem;
   width: 90%;
   margin: 0 auto;
+
 }
+
 
 .productName {
   font-size: 1.5rem;
@@ -124,3 +138,17 @@
   margin: 2rem auto;
   display: flex;
 }
+
+@media screen and (max-width: 768px) {
+  .productGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+  
+@media screen and (max-width: 500px) {
+  .productGrid {
+    grid-template-columns: repeat(1, 1fr);
+
+  }
+}
+  
