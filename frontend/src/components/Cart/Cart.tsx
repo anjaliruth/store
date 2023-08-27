@@ -17,7 +17,7 @@ export default function Cart({ cartItems }) {
         </button>
       </div>
 
-      {isCartOpen && (
+      {isCartOpen && cartItems.length > 0 && (
         <div className="cartList">
           {cartItems.map((item) => (
             <div key={item.id} className="cartItem">
