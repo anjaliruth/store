@@ -6,15 +6,14 @@ export default function Cart({ cartItems }) {
   console.log("isCartOpen:", isCartOpen);
 
   return (
-    <div className="">
-      <div className="cartButton-with-numbers">
+    <div className="cart-container">
+      <div className="cartButton-container">
         <button
           className="cartButton"
           onClick={() => setIsCartOpen(!isCartOpen)}
         >
           <span className="material-symbols-outlined">shopping_cart</span>
           <h3>{cartItems.length > 0 ? `(${cartItems.length})` : null}</h3>
-
         </button>
       </div>
 
