@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 
 import SearchBar from "./components/SearchBar/SearchBar.tsx";
+import Cart from "./components/Cart/Cart.tsx";
 
 function App() {
   const [dataFromServer, setDataFromServer] = useState<string[]>([]);
@@ -31,8 +32,9 @@ function App() {
 
   return (
     <>
-      <div>
+      <div className="customerDisplay">
         <SearchBar dataFromServer={dataFromServer}/>
+        < Cart/>
         
       </div>
     </>
