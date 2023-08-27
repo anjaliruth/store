@@ -1,0 +1,173 @@
+/* main-container component */
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+
+/* customerDisplay */
+.customerDisplay {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  width: 100%;
+}
+
+/* cart component container */
+.cart-container {
+  position: fixed; /* or use "position: absolute;" depending on your layout needs */
+  top: 1%; /* Adjust the top position as needed */
+  right: 1%; /* Adjust the right position as needed */
+  width: 300px; /* Adjust the width as needed */
+  z-index: 100; /* Ensure it's above other content */
+}
+
+.cartButton-container{
+  display: flex;
+  justify-content: flex-end
+}
+
+/* cartList component */
+.cartList {
+  background-color: white; /* Apply white background only to the cartList */
+  border: 2px solid black;
+  border-radius: 4px;
+  padding: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-height: 400px; /* Add a max height for scrolling if needed */
+  overflow-y: auto; /* Add scrolling if the content exceeds the max height */
+}
+
+/* cardButton container */
+
+.cardButtonContainer {
+  display: flex;
+  justify-content: end;
+  background-color: aquamarine;
+}
+/* cartButtoncomponent */
+.cartButton {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.2rem;
+  margin: 1rem;
+  padding: 0.2rem;
+}
+
+/* cartItem component */
+.cartItem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  color: black;
+  background-color: white;
+}
+
+.cartItem img {
+  width: 30%;
+  margin-right: 1rem;
+}
+
+/* productNameInCart component */
+.productNameInCart {
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0.5rem 0;
+  width: 150%;
+}
+
+/* totalPrice component */
+
+.totalPrice {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem;
+  padding-bottom: 0;
+  color: black;
+  background-color: white;
+}
+
+
+.productCard {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  color: black;
+  border-radius: 3%;
+  align-items: center;
+  justify-self: center; /* Center horizontally within the grid cell */
+  align-self: center; 
+  width: 70%;
+  padding: 0;
+  padding-bottom: 5%;
+}
+
+
+/* productGrid component*/
+.productGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1rem;
+  width: 90%;
+  margin: 0 auto;
+
+}
+/* items on productCard */
+
+.productName {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0.5rem 0;
+}
+
+.price{
+  padding: 0;
+  margin: 0;
+}
+
+.addToCartButton{
+  padding-top:none;
+  margin-top: none;
+  }
+
+  .productCard img {
+    width: 70%;
+    border-radius: 3%;
+    margin-top: 15%;
+  }
+/* SearchBar Component */
+
+.inputField{
+  border-radius: 10px;
+  padding: 10px;
+  border:none;
+}
+.inputField,
+.cart {
+  width: 20%;
+  margin: 2rem auto;
+  display: flex;
+}
+
+@media screen and (max-width: 768px) {
+  .productGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+  
+@media screen and (max-width: 500px) {
+  .productGrid {
+    grid-template-columns: repeat(1, 1fr);
+
+  }
+}
+  
