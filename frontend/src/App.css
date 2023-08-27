@@ -18,11 +18,18 @@
 }
 
 
-/* cartList component */
-.cartList{
-  background-color: thistle;
-
+/* cartButton-with-numbers component */
+.cartButton{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 1rem;
+  padding: 0.5rem;
+  background-color: none;
 }
+/* cartList component */
 
 /* cartItem component */
 .cartItem{

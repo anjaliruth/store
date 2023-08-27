@@ -7,10 +7,16 @@ export default function Cart({ cartItems }) {
 
   return (
     <div className="">
-      <button className="cartButton" onClick={() => setIsCartOpen(!isCartOpen)}>
-        <span className="material-symbols-outlined">shopping_cart</span>
-        <h3>{cartItems.length}</h3>
-      </button>
+      <div className="cartButton-with-numbers">
+        <button
+          className="cartButton"
+          onClick={() => setIsCartOpen(!isCartOpen)}
+        >
+          <span className="material-symbols-outlined">shopping_cart</span>
+          <h3>{cartItems.length > 0 ? `(${cartItems.length})` : null}</h3>
+
+        </button>
+      </div>
 
       {isCartOpen && (
         <div className="cartList">
@@ -22,17 +28,20 @@ export default function Cart({ cartItems }) {
               <h3>{item.description}</h3>
             </div>
           ))}
-          <div className="totalPrice">
-            <h2>Total:</h2>
-            <h2>
-              {" "}
-              £
-              {cartItems.reduce(
-                (total, item) => total + parseFloat(item.price),
-                0
-              )}
-            </h2>
-          </div>
+
+          {cartItems.length > 0 && (
+            <div className="totalPrice">
+              <h2>Total:</h2>
+              <h2>
+                {" "}
+                £
+                {cartItems.reduce(
+                  (total, item) => total + parseFloat(item.price),
+                  0
+                )}
+              </h2>
+            </div>
+          )}
         </div>
       )}
     </div>
