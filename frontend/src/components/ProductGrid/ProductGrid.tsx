@@ -5,7 +5,7 @@ export default function ProductGrid({ filteredItems, cartItems, setCartItems }) 
     setCartItems([...cartItems, item]); // Update the cartItems state in the parent component
     console.log("add to cart button works");
   }
-
+console.log("Cart Items:", cartItems)
   return (
     <div className="productGrid">
       {filteredItems.map((item) => (

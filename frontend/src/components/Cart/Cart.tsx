@@ -1,12 +1,24 @@
-import React from 'react'
+import React from "react";
 
-export default function Cart({cartItems}) {
+export default function Cart({ cartItems }) {
   return (
-    <button className="cartButton">
-        <span className="material-symbols-outlined">
-shopping_cart
-</span>
-<h3>{cartItems.length}</h3>
-    </button>
-  )
+    <div className="">
+      <button className="cartButton">
+        <span className="material-symbols-outlined">shopping_cart</span>
+        <h3>{cartItems.length}</h3>
+      </button>
+
+      <div className="cartList">
+        {cartItems.map((item) => (
+          <div key={item.id} className="cartItem">
+            <img src={item.image} alt={item.name} />
+            <p className="productNameInCart">{item.name}</p>
+            <h4> £{item.price}</h4>
+            <h3>{item.description}</h3>
+          </div>
+        ))}
+
+      </div>
+    </div>
+  );
 }
