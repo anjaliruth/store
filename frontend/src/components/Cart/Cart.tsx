@@ -19,6 +19,12 @@ export default function Cart({ cartItems }) {
         ))}
 
       </div>
+
+      <div className="totalPrice">
+        <h2>Total:</h2>
+        <h2> £{cartItems.reduce((total, item) => total + parseFloat(item.price), 0)}</h2>
+
+      </div>
     </div>
   );
 }
