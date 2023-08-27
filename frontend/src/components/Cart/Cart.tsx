@@ -1,9 +1,15 @@
 import { useState } from "react";
 
-export default function Cart({ cartItems }) {
+export default function Cart({ cartItems, setCartItems }) {
   const [isCartOpen, setIsCartOpen] = useState(false);
   console.log("Cart Items:", cartItems);
   console.log("isCartOpen:", isCartOpen);
+
+function deleteFromCart(item){
+  setCartItems(cartItems.filter((cartItem) => cartItem.id !== item.id))
+}
+
+
 
   return (
     <div className="cart-container">
@@ -25,6 +31,9 @@ export default function Cart({ cartItems }) {
               <p className="productNameInCart">{item.name}</p>
               <h4> £{item.price}</h4>
               <h3>{item.description}</h3>
+              <button className="deleteButton" onClick={()=> deleteFromCart(item)}><span className="material-symbols-outlined">
+delete
+</span></button>
             </div>
           ))}
 
