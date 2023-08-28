@@ -8,7 +8,9 @@ export default function Cart({ cartItems, setCartItems }) {
 function deleteFromCart(item){
   setCartItems(cartItems.filter((cartItem) => cartItem.id !== item.id))
 }
-
+const cartQuantity = cartItems.reduce(
+    (quantity, item) =>  item.quantity + quantity, 0)
+ 
 
 
   return (
@@ -19,7 +21,7 @@ function deleteFromCart(item){
           onClick={() => setIsCartOpen(!isCartOpen)}
         >
           <span className="material-symbols-outlined">shopping_cart</span>
-          <h3>{cartItems.length > 0 ? `(${cartItems.length})` : null}</h3>
+          <h3>{cartQuantity > 0 ? `(${cartQuantity})` : null}</h3>
         </button>
       </div>
 
