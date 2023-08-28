@@ -5,13 +5,18 @@ export default function Cart({ cartItems, setCartItems }) {
   console.log("Cart Items:", cartItems);
   console.log("isCartOpen:", isCartOpen);
 
-function deleteFromCart(item){
-  setCartItems(cartItems.filter((cartItem) => cartItem.id !== item.id))
-}
-const cartQuantity = cartItems.reduce(
-    (quantity, item) =>  item.quantity + quantity, 0)
- 
+  function deleteFromCart(item) {
+    setCartItems(cartItems.filter((cartItem) => cartItem.id !== item.id));
+  }
+  const cartQuantity = cartItems.reduce(
+    (quantity, item) => item.quantity + quantity,
+    0
+  );
 
+  const totalPrice = cartItems.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0
+  );
 
   return (
     <div className="cart-container">
@@ -31,11 +36,14 @@ const cartQuantity = cartItems.reduce(
             <div key={item.id} className="cartItem">
               <img src={item.image} alt={item.name} />
               <p className="productNameInCart">{item.name}</p>
-              <h4> £{item.price}</h4>
-              <h3>{item.description}</h3>
-              <button className="deleteButton" onClick={()=> deleteFromCart(item)}><span className="material-symbols-outlined">
-delete
-</span></button>
+              <p>x{item.quantity}</p>
+              <h4> £{item.price * item.quantity}</h4>
+              <button
+                className="deleteButton"
+                onClick={() => deleteFromCart(item)}
+              >
+                <span className="material-symbols-outlined">delete</span>
+              </button>
             </div>
           ))}
 
@@ -45,10 +53,7 @@ delete
               <h2>
                 {" "}
                 £
-                {cartItems.reduce(
-                  (total, item) => total + parseFloat(item.price),
-                  0
-                )}
+                {totalPrice}
               </h2>
             </div>
           )}
