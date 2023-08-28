@@ -151,6 +151,30 @@
     border-radius: 3%;
     margin-top: 15%;
   }
+
+
+
+
+  /* quantityForCart component */
+.quantityForCart{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
+}
+.removeButton{
+  background-color: tomato;
+}
+
+.calculationInCart{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+
+
+
 /* SearchBar Component */
 
 .inputField{
