@@ -13,7 +13,7 @@ export default function SearchBar({dataFromServer, cartItems, setCartItems}) {
     <div>
       <input placeholder="Search" onChange={(e)=>setFilter(e.target.value)} className="inputField"/>
 
-      <ProductGrid filteredItems={filteredItems} cartItems={cartItems} setCartItems={setCartItems}/>
+      <ProductGrid filteredItems={filteredItems} cartItems={cartItems} setCartItems={setCartItems} dataFromServer={dataFromServer}/>
     </div>
   );
 }
