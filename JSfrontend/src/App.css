@@ -1,10 +1,14 @@
+body {
+  place-items: initial !important; /* Override the default alignment */
+}
+
+
 /* main-container component */
 .main-container {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
 
 
 
@@ -181,12 +185,13 @@
   border-radius: 10px;
   padding: 10px;
   border:none;
+  flex: 1
 }
 .inputField,
 .cart {
+  display: flex;
   width: 20%;
   margin: 2rem auto;
-  display: flex;
 }
 
 @media screen and (max-width: 768px) {
