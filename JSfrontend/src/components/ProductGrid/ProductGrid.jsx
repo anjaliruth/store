@@ -73,6 +73,14 @@ export default function ProductGrid({
               </button>
             ) : (
               <div className="quantityForCart">
+              <div className="sizeDropdown">
+                <select>
+       <option value="XS">XS</option>
+       <option value="S">S</option>
+       <option value="M">M</option>
+       <option value="L">L</option>
+                </select>
+              </div>
                 <div className="calculationInCart">
                   <button className="minusAmt" onClick={()=> decreaseCartQuantity(item.id)}>-</button>
                   <span>{getIndCartItemQuantity(item.id)}</span> in cart
@@ -81,6 +89,7 @@ export default function ProductGrid({
                 <button className="removeButton" onClick={()=> removeCartItem(item.id)}>Remove</button>
               </div>
             )}
+             
           </div>
         ))}
       </div>
