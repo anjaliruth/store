@@ -8,11 +8,15 @@ export default function Cart({ cartItems, setCartItems }) {
   function deleteFromCart(item) {
     setCartItems(cartItems.filter((cartItem) => cartItem.id !== item.id));
   }
-  const cartQuantity = cartItems.reduce(
-    (quantity, item) => item.quantity + quantity,
-    0
-  );
 
+  const cartQuantity = cartItems.reduce((totalQuantity, item) => {
+    const sizeQuantity = item.sizes.reduce((sizeTotal, sizeItem) => {
+      return sizeTotal + sizeItem.quantity;
+    }, 0);
+    return totalQuantity + sizeQuantity;
+  }, 0);
+
+  console.log("Cart Quantity:", cartQuantity);
   const totalPrice = cartItems.reduce(
     (total, item) => total + item.price * item.quantity,
     0
