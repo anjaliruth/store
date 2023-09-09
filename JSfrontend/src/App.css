@@ -2,15 +2,12 @@ body {
   place-items: initial !important; /* Override the default alignment */
 }
 
-
 /* main-container component */
 .main-container {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
-
 
 /* customerDisplay */
 .customerDisplay {
@@ -29,9 +26,9 @@ body {
   z-index: 100; /* Ensure it's above other content */
 }
 
-.cartButton-container{
+.cartButton-container {
   display: flex;
-  justify-content: flex-end
+  justify-content: flex-end;
 }
 
 /* cartList component */
@@ -63,7 +60,6 @@ body {
   padding: 0.2rem;
 }
 
-
 /* cartItem component */
 .cartItem {
   display: flex;
@@ -75,10 +71,9 @@ body {
   background-color: white;
 }
 
-
 /* deleteButton from cartComponent */
-.deleteButton{
-  padding: 0.5rem
+.deleteButton {
+  padding: 0.5rem;
 }
 .cartItem img {
   width: 30%;
@@ -107,7 +102,6 @@ body {
   background-color: white;
 }
 
-
 .productCard {
   display: flex;
   flex-direction: column;
@@ -116,12 +110,11 @@ body {
   border-radius: 3%;
   align-items: center;
   justify-self: center; /* Center horizontally within the grid cell */
-  align-self: center; 
+  align-self: center;
   width: 70%;
   padding: 0;
   padding-bottom: 5%;
 }
-
 
 /* productGrid component*/
 .productGrid {
@@ -130,7 +123,6 @@ body {
   gap: 1rem;
   width: 90%;
   margin: 0 auto;
-
 }
 /* items on productCard */
 
@@ -140,52 +132,52 @@ body {
   margin: 0.5rem 0;
 }
 
-.price{
+.price {
   padding: 0;
   margin: 0;
 }
 
-.addToCartButton{
-  padding-top:none;
+.addToCartButton {
+  padding-top: none;
   margin-top: none;
-  }
+}
 
-  .productCard img {
-    width: 70%;
-    border-radius: 3%;
-    margin-top: 15%;
-  }
+.disabled {
+  background-color: #ccc; /* Gray background */
+  color: #999; /* Gray text */
+  cursor: not-allowed; /* Change cursor to "not allowed" */
+}
 
+.productCard img {
+  width: 70%;
+  border-radius: 3%;
+  margin-top: 15%;
+}
 
-
-
-  /* quantityForCart component */
-.quantityForCart{
+/* quantityForCart component */
+.quantityForCart {
   display: flex;
   flex-direction: column;
   gap: 5px;
   align-items: center;
 }
-.removeButton{
+.removeButton {
   background-color: tomato;
 }
 
-.calculationInCart{
+.calculationInCart {
   display: flex;
   align-items: center;
-  gap: 5px
+  gap: 5px;
 }
-
-
-
 
 /* SearchBar Component */
 
-.inputField{
+.inputField {
   border-radius: 10px;
   padding: 10px;
-  border:none;
-  flex: 1
+  border: none;
+  flex: 1;
 }
 .inputField,
 .cart {
@@ -199,11 +191,9 @@ body {
     grid-template-columns: repeat(2, 1fr);
   }
 }
-  
+
 @media screen and (max-width: 500px) {
   .productGrid {
     grid-template-columns: repeat(1, 1fr);
-
   }
 }
-  

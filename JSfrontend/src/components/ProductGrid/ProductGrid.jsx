@@ -10,34 +10,57 @@ export default function ProductGrid({
     return cartItems.find((item) => item.id === id)?.quantity || 0;
   }
   console.log("size:", itemSize);
+
   function increaseCartQuantity(id, selectedSize) {
     setCartItems((currItems) => {
-      const existingCartItems = currItems.find((item) => item.id === id);
+      const existingCartItem = currItems.find((item) => item.id === id);
 
-      //if item does not exist in the cart
-      if (!existingCartItems) {
+      if (!existingCartItem) {
         // Find the item in the dataFromServer array
         const newItem = dataFromServer.find((item) => item.id === id);
-        // if item not found in dataFromServer
         if (!newItem) {
-          return currItems;
+          return currItems; // Item not found in dataFromServer
         }
 
-        // Add the new item to the cart with quantity 1, with selected Size
-        return [...currItems, { ...newItem, quantity: 1, size: selectedSize }];
+        // Add the new item to the cart with quantity 1 and the selected size
+        return [
+          ...currItems,
+          { ...newItem, sizes: [{ size: selectedSize, quantity: 1 }] },
+        ];
       } else {
+        // Check if an item with the same size already exists in the cart
+        const existingItemWithSize = existingCartItem.sizes.find(
+          (sizeItem) => sizeItem.size === selectedSize
+        );
 
-        // Increment quantity of existing item in cart
-        return currItems.map((item) => {
-          if (item.id === id) {
-            return {
-              ...item,
-              quantity: item.quantity + 1,
-            };
-          } else {
-            return item;
-          }
-        });
+        if (!existingItemWithSize) {
+          // Add a new size for the existing item
+          return currItems.map((item) => {
+            if (item.id === id) {
+              return {
+                ...item,
+                sizes: [...item.sizes, { size: selectedSize, quantity: 1 }],
+              };
+            } else {
+              return item;
+            }
+          });
+        } else {
+          // Increment quantity of existing item with the selected size
+          // Increment quantity of existing item with the selected size
+          return currItems.map((item) => {
+            if (item.id === id) {
+              const updatedSizes = item.sizes.map((sizeItem) =>
+                sizeItem.size === selectedSize
+                  ? { ...sizeItem, quantity: sizeItem.quantity + 1 }
+                  : sizeItem
+              );
+              return { ...item, sizes: updatedSizes };
+            } else {
+              return item;
+            }
+          });
+        }
       }
     });
   }
@@ -86,13 +109,22 @@ export default function ProductGrid({
             </select>
           </div>
           {getIndCartItemQuantity(item.id) === 0 ? (
-            <button
-              className="addToCartButton"
-              onClick={() => increaseCartQuantity(item.id, itemSize)}
-            >
-              {" "}
-              + Add to Cart
-            </button>
+            itemSize === "" ? (
+              <button
+                className="addToCartButton disabled" // Add a CSS class for styling
+                disabled // Disable the button
+              >
+                + Add to Cart
+              </button>
+            ) : (
+              // Render the button as usual when a size is selected
+              <button
+                className="addToCartButton"
+                onClick={() => increaseCartQuantity(item.id, itemSize)}
+              >
+                + Add to Cart
+              </button>
+            )
           ) : (
             <div className="quantityForCart">
               <div className="calculationInCart">

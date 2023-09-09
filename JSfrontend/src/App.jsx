@@ -38,12 +38,12 @@ function App() {
             itemSize={itemSize}
             setItemSize={setItemSize}
           />
-          {/* <Cart
+          <Cart
             cartItems={cartItems}
             setCartItems={setCartItems}
             itemSize={itemSize}
             setItemSize={setItemSize}
-          /> */}
+          />
         </div>
       </div>
     </>
