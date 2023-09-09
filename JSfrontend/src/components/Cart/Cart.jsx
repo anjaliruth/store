@@ -50,11 +50,7 @@ export default function Cart({ cartItems, setCartItems }) {
           {cartItems.length > 0 && (
             <div className="totalPrice">
               <h2>Total:</h2>
-              <h2>
-                {" "}
-                £
-                {totalPrice}
-              </h2>
+              <h2> £{totalPrice}</h2>
             </div>
           )}
         </div>

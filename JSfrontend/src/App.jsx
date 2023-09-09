@@ -7,6 +7,7 @@ import Cart from "./components/Cart/Cart.jsx";
 function App() {
   const [dataFromServer, setDataFromServer] = useState([]);
   const [cartItems, setCartItems] = useState([]);
+  const [itemSize, setItemSize] = useState("");
 
   console.log("Here it is:", dataFromServer);
   useEffect(() => {
@@ -34,13 +35,19 @@ function App() {
             dataFromServer={dataFromServer}
             cartItems={cartItems}
             setCartItems={setCartItems}
+            itemSize={itemSize}
+            setItemSize={setItemSize}
           />
-          <Cart cartItems={cartItems} setCartItems={setCartItems}  />
+          {/* <Cart
+            cartItems={cartItems}
+            setCartItems={setCartItems}
+            itemSize={itemSize}
+            setItemSize={setItemSize}
+          /> */}
         </div>
       </div>
     </>
   );
 }
-
 
 export default App;
