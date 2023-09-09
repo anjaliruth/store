@@ -36,7 +36,7 @@ export default function Cart({ cartItems, setCartItems }) {
             <div key={item.id} className="cartItem">
               <img src={item.image} alt={item.name} />
               <p className="productNameInCart">{item.name}</p>
-              <p>x{item.quantity}</p>
+              <p>x{item.sizes.quantity}</p>
               <h4> £{item.price * item.quantity}</h4>
               <button
                 className="deleteButton"

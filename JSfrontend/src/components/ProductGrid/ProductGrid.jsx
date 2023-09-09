@@ -98,7 +98,7 @@ export default function ProductGrid({
           <h3>{item.description}</h3>
           <div className="sizeDropdown">
             <select
-              value={itemSize}
+              value={itemSize[item.id]}
               onChange={(e) => setItemSize(e.target.value)}
             >
               <option value="Size">Size</option>
