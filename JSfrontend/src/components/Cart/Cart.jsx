@@ -17,9 +17,11 @@ export default function Cart({ cartItems, setCartItems }) {
   }, 0);
 
   console.log("Cart Quantity:", cartQuantity);
+  // outer reduce adds teh total fore each item
   const totalPrice = cartItems.reduce((totalAmt, item) => {
     return (
       totalAmt +
+      // inner reduce calculates the total amount for one particular item, taking into account the quantity and size
       item.sizes.reduce((itemTotal, sizeItem) => {
         return itemTotal + item.price * sizeItem.quantity;
       }, 0)
