@@ -17,10 +17,14 @@ export default function Cart({ cartItems, setCartItems }) {
   }, 0);
 
   console.log("Cart Quantity:", cartQuantity);
-  const totalPrice = cartItems.reduce(
-    (total, item) => total + item.price * item.quantity,
-    0
-  );
+  const totalPrice = cartItems.reduce((totalAmt, item) => {
+    return (
+      totalAmt +
+      item.sizes.reduce((itemTotal, sizeItem) => {
+        return itemTotal + item.price * sizeItem.quantity;
+      }, 0)
+    );
+  }, 0);
 
   return (
     <div className="cart-container">
@@ -36,20 +40,18 @@ export default function Cart({ cartItems, setCartItems }) {
 
       {isCartOpen && cartItems.length > 0 && (
         <div className="cartList">
-          {cartItems.map((item) => (
-            <div key={item.id} className="cartItem">
-              <img src={item.image} alt={item.name} />
-              <p className="productNameInCart">{item.name}</p>
-              <p>x{item.sizes.quantity}</p>
-              <h4> £{item.price * item.quantity}</h4>
-              <button
-                className="deleteButton"
-                onClick={() => deleteFromCart(item)}
-              >
-                <span className="material-symbols-outlined">delete</span>
-              </button>
-            </div>
-          ))}
+          {/* flatMap flattens the nested structure */}
+          {cartItems.flatMap((item) =>
+            item.sizes.map((sizeItem) => (
+              <div key={`${item.id}-${sizeItem.size}`} className="cartItem">
+                <img src={item.image} alt={item.name} />
+                <h3 className="productNameInCart">{item.name}</h3>
+                <p>{sizeItem.size}</p>
+                <p>x{sizeItem.quantity}</p>
+                <h3>£{item.price * sizeItem.quantity}</h3>
+              </div>
+            ))
+          )}
 
           {cartItems.length > 0 && (
             <div className="totalPrice">
