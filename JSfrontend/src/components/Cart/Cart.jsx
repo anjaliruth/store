@@ -28,67 +28,72 @@ export default function Cart({ cartItems, setCartItems, itemSize }) {
     );
   }, 0);
 
-  function getIndCartItemQuantity(id) {
-    return cartItems.find((item) => item.id === id)?.quantity || 0;
-  }
-
-
   function increaseCartQuantity(id, selectedSize) {
     setCartItems((currItems) => {
       const existingCartItem = currItems.find((item) => item.id === id);
 
-      if (!existingCartItem) {
-        // Find the item in the dataFromServer array
-        const newItem = dataFromServer.find((item) => item.id === id);
-        if (!newItem) {
-          return currItems; // Item not found in dataFromServer
-        }
+      // Check if an item with the same size already exists in the cart
+      const existingItemWithSize = existingCartItem.sizes.find(
+        (sizeItem) => sizeItem.size === selectedSize
+      );
 
-        // Add the new item to the cart with quantity 1 and the selected size
-        return [
-          ...currItems,
-          { ...newItem, sizes: [{ size: selectedSize, quantity: 1 }] },
-        ];
+      if (!existingItemWithSize) {
+        // Add a new size for the existing item
+        return currItems.map((item) => {
+          if (item.id === id) {
+            return {
+              ...item,
+              sizes: [...item.sizes, { size: selectedSize, quantity: 1 }],
+            };
+          } else {
+            return item;
+          }
+        });
       } else {
-        // Check if an item with the same size already exists in the cart
-        const existingItemWithSize = existingCartItem.sizes.find(
-          (sizeItem) => sizeItem.size === selectedSize
-        );
-
-        if (!existingItemWithSize) {
-          // Add a new size for the existing item
-          return currItems.map((item) => {
-            if (item.id === id) {
-              return {
-                ...item,
-                sizes: [...item.sizes, { size: selectedSize, quantity: 1 }],
-              };
-            } else {
-              return item;
-            }
-          });
-        } else {
-          // Increment quantity of existing item with the selected size
-          // Increment quantity of existing item with the selected size
-          return currItems.map((item) => {
-            if (item.id === id) {
-              const updatedSizes = item.sizes.map((sizeItem) =>
-                sizeItem.size === selectedSize
-                  ? { ...sizeItem, quantity: sizeItem.quantity + 1 }
-                  : sizeItem
-              );
-              return { ...item, sizes: updatedSizes };
-            } else {
-              return item;
-            }
-          });
-        }
+        // Increment quantity of existing item with the selected size
+        return currItems.map((item) => {
+          if (item.id === id) {
+            const updatedSizes = item.sizes.map((sizeItem) =>
+              sizeItem.size === selectedSize
+                ? { ...sizeItem, quantity: sizeItem.quantity + 1 }
+                : sizeItem
+            );
+            return { ...item, sizes: updatedSizes };
+          } else {
+            return item;
+          }
+        });
       }
     });
   }
 
-  
+  function decreaseCartQuantity(id, selectedSize) {
+    setCartItems((currItems) => {
+      const existingCartItem = currItems.find((item) => item.id === id);
 
+      // Check if an item with the same size already exists in the cart
+      const existingItemWithSize = existingCartItem.sizes.find(
+        (sizeItem) => sizeItem.size === selectedSize
+      );
+
+      if (existingItemWithSize.quantity === 1) {
+        return currItems.filter((item) => item.id !== id);
+      } else {
+        return currItems.map((item) => {
+          if (item.id == id) {
+            const updatedSizes = item.sizes.map((sizeItem) =>
+              sizeItem.size === selectedSize
+                ? { ...sizeItem, quantity: sizeItem.quantity - 1 }
+                : sizeItem
+            );
+            return { ...item, sizes: updatedSizes };
+          } else {
+            return item;
+          }
+        });
+      }
+    });
+  }
 
   return (
     <div className="cart-container">
@@ -113,21 +118,21 @@ export default function Cart({ cartItems, setCartItems, itemSize }) {
                 <p>{sizeItem.size}</p>
                 <h3>£{item.price * sizeItem.quantity}</h3>
                 <div className="calculationInCart">
+                  <button
+                    className="minusAmt"
+                    onClick={() => decreaseCartQuantity(item.id, itemSize)}
+                  >
+                    -
+                  </button>
+                  <span>x{sizeItem.quantity}</span>
+                  <button
+                    className="plusAmt"
+                    onClick={() => increaseCartQuantity(item.id, itemSize)}
+                  >
+                    +
+                  </button>
+                </div>
                 {/* <button
-                  className="minusAmt"
-                  onClick={() => decreaseCartQuantity(item.id)}
-                >
-                  -
-                </button> */}
-                <span>x{sizeItem.quantity}</span>
-                <button
-                  className="plusAmt"
-                  onClick={() => increaseCartQuantity(item.id, itemSize)}
-                >
-                  +
-                </button>
-              </div>
-              {/* <button
                 className="removeButton"
                 onClick={() => removeCartItem(item.id)}
               >
