@@ -137,7 +137,7 @@ export default function ProductGrid({
                 <span>{getIndCartItemQuantity(item.id)}</span> in cart
                 <button
                   className="plusAmt"
-                  onClick={() => increaseCartQuantity(item.id)}
+                  onClick={() => increaseCartQuantity(item.id,)}
                 >
                   +
                 </button>
