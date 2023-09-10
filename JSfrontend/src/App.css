@@ -186,6 +186,28 @@ body {
   margin: 2rem auto;
 }
 
+/* buttons in Cart */
+.minusAmt, .plusAmt{
+  background-color: white;
+  color: black;
+  padding: 0.5rem;
+}
+
+.minusAmt{
+  border-left: 2px solid black;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  border-radius: 10px 0 0 10px;
+}
+.plusAmt{
+  border-right: 2px solid black;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  border-radius:  0 10px 10px 0;
+}
+
+
+
 @media screen and (max-width: 768px) {
   .productGrid {
     grid-template-columns: repeat(2, 1fr);
