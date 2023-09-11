@@ -142,9 +142,14 @@ export default function Cart({ cartItems, setCartItems, itemSize }) {
           )}
 
           {cartItems.length > 0 && (
+            <div className="">
             <div className="totalPrice">
-              <h2>Total:</h2>
+              <h2>Subtotal:</h2>
               <h2> £{totalPrice}</h2>
+            </div>
+            <div className="">
+            <p className="taxes">Shipping, taxes & discounts calculated at checkout.</p>
+            </div>
             </div>
           )}
         </div>

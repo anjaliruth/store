@@ -90,6 +90,10 @@ margin: 0;
 .cartItemPrice{
 margin-top: 50px;
 }
+
+.taxes{
+  color: black;
+}
 /* deleteButton from cartComponent */
 .deleteButton {
   padding: 0.5rem;
