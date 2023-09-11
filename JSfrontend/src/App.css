@@ -64,6 +64,7 @@ body {
 .cartItem {
   display: flex;
   flex-direction: row;
+  justify-content: center;
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem;
@@ -71,12 +72,30 @@ body {
   background-color: white;
 }
 
+/* details in Cart */
+.description {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  gap: 0;
+}
+
+.itemSize{
+padding: 0;
+padding-bottom: 2px;
+margin: 0;
+}
+
+
+.cartItemPrice{
+margin-top: 50px;
+}
 /* deleteButton from cartComponent */
 .deleteButton {
   padding: 0.5rem;
 }
 .cartItem img {
-  width: 30%;
+  width: 40%;
   margin-right: 1rem;
 }
 
@@ -84,7 +103,7 @@ body {
 .productNameInCart {
   font-size: 1rem;
   font-weight: bold;
-  margin: 0.5rem 0;
+  margin: 0;
   width: 100%;
 }
 
@@ -168,7 +187,9 @@ body {
 .calculationInCart {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 0;
+
+  height: 50%;
 }
 
 /* SearchBar Component */
@@ -187,23 +208,37 @@ body {
 }
 
 /* buttons in Cart */
-.minusAmt, .plusAmt{
+.minusAmt,
+.plusAmt {
   background-color: white;
   color: black;
   padding: 0.5rem;
 }
 
-.minusAmt{
+.minusAmt {
   border-left: 2px solid black;
   border-top: 2px solid black;
   border-bottom: 2px solid black;
-  border-radius: 10px 0 0 10px;
+  border-radius: 10px 0px 0 10px;
 }
-.plusAmt{
+
+.minusAmt:hover,
+.plusAmt:hover {
+  background-color: black;
+  color: white;
+}
+.plusAmt {
   border-right: 2px solid black;
   border-top: 2px solid black;
   border-bottom: 2px solid black;
-  border-radius:  0 10px 10px 0;
+  border-radius: 0 10px 10px 0;
+}
+
+.itemQuantity {
+  margin: 0;
+  padding: 5.5px 4px 6px 4px;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
 }
 
 

@@ -113,31 +113,30 @@ export default function Cart({ cartItems, setCartItems, itemSize }) {
           {cartItems.flatMap((item) =>
             item.sizes.map((sizeItem) => (
               <div key={`${item.id}-${sizeItem.size}`} className="cartItem">
-                <img src={item.image} alt={item.name} />
-                <h3 className="productNameInCart">{item.name}</h3>
-                <p>{sizeItem.size}</p>
-                <h3>£{item.price * sizeItem.quantity}</h3>
-                <div className="calculationInCart">
-                  <button
-                    className="minusAmt"
-                    onClick={() => decreaseCartQuantity(item.id, itemSize)}
-                  >
-                    -
-                  </button>
-                  <span>x{sizeItem.quantity}</span>
-                  <button
-                    className="plusAmt"
-                    onClick={() => increaseCartQuantity(item.id, itemSize)}
-                  >
-                    +
-                  </button>
+                <img src={item.image} alt={item.name} className="imageInCart"/>
+                <div className="description">
+                  <h3 className="productNameInCart">{item.name}</h3>
+                  <p className="itemSize">{sizeItem.size}</p>
+
+                  <div className="calculationInCart">
+                    <button
+                      className="minusAmt"
+                      onClick={() => decreaseCartQuantity(item.id, itemSize)}
+                    >
+                      -
+                    </button>
+                    <h4 className="itemQuantity">{sizeItem.quantity}</h4>
+                    <button
+                      className="plusAmt"
+                      onClick={() => increaseCartQuantity(item.id, itemSize)}
+                    >
+                      +
+                    </button>
+                  </div>
                 </div>
-                {/* <button
-                className="removeButton"
-                onClick={() => removeCartItem(item.id)}
-              >
-                Remove
-              </button> */}
+                <div className="cartItemPrice">
+                <h3>£{item.price * sizeItem.quantity}</h3>
+                </div>
               </div>
             ))
           )}
