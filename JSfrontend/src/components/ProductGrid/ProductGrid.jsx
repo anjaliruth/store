@@ -5,6 +5,8 @@ export default function ProductGrid({
   dataFromServer,
   itemSize,
   setItemSize,
+  setIsCartOpen,
+  isCartOpen,
 }) {
   function getIndCartItemQuantity(id) {
     return cartItems.find((item) => item.id === id)?.quantity || 0;
@@ -12,6 +14,7 @@ export default function ProductGrid({
   console.log("size:", itemSize);
 
   function increaseCartQuantity(id, selectedSize) {
+ 
     setCartItems((currItems) => {
       const existingCartItem = currItems.find((item) => item.id === id);
 
@@ -27,6 +30,7 @@ export default function ProductGrid({
           ...currItems,
           { ...newItem, sizes: [{ size: selectedSize, quantity: 1 }] },
         ];
+        
       } else {
         // Check if an item with the same size already exists in the cart
         const existingItemWithSize = existingCartItem.sizes.find(
@@ -63,28 +67,8 @@ export default function ProductGrid({
         }
       }
     });
-  }
-
-  function decreaseCartQuantity(id) {
-    setCartItems((currItems) => {
-      if (cartItems.find((item) => item.id == id)?.quantity === 1) {
-        return currItems.filter((item) => item.id !== id);
-      } else {
-        return currItems.map((item) => {
-          if (item.id == id) {
-            return { ...item, quantity: item.quantity - 1 };
-          } else {
-            return item;
-          }
-        });
-      }
-    });
-  }
-
-  function removeCartItem(id) {
-    setCartItems((currItems) => {
-      return currItems.filter((item) => item.id !== id);
-    });
+    setIsCartOpen(true)
+    setTimeout(() => setIsCartOpen(false), 3000);
   }
 
   console.log("Cart Items:", cartItems);
@@ -107,39 +91,13 @@ export default function ProductGrid({
               <option value="L">L</option>
             </select>
           </div>
-          {getIndCartItemQuantity(item.id) === 0 ? (
-            // Render the button as usual when a size is selected
-            <button
-              className="addToCartButton"
-              onClick={() => increaseCartQuantity(item.id, itemSize)}
-            >
-              + Add to Cart
-            </button>
-          ) : (
-            <div className="quantityForCart">
-              <div className="calculationInCart">
-                <button
-                  className="minusAmt"
-                  onClick={() => decreaseCartQuantity(item.id)}
-                >
-                  -
-                </button>
-                <span>{getIndCartItemQuantity(item.id)}</span> in cart
-                <button
-                  className="plusAmt"
-                  onClick={() => increaseCartQuantity(item.id)}
-                >
-                  +
-                </button>
-              </div>
-              <button
-                className="removeButton"
-                onClick={() => removeCartItem(item.id)}
-              >
-                Remove
-              </button>
-            </div>
-          )}
+
+          <button
+            className="addToCartButton"
+            onClick={() => increaseCartQuantity(item.id, itemSize)}
+          >
+            + Add to Cart
+          </button>
         </div>
       ))}
     </div>

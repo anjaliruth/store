@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-export default function Cart({ cartItems, setCartItems, itemSize }) {
-  const [isCartOpen, setIsCartOpen] = useState(false);
+export default function Cart({ cartItems, setCartItems, itemSize, setIsCartOpen, isCartOpen }) {
+ 
   console.log("Cart Items:", cartItems);
   console.log("isCartOpen:", isCartOpen);
 

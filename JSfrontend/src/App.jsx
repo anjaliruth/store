@@ -5,6 +5,7 @@ import SearchBar from "./components/SearchBar/SearchBar.jsx";
 import Cart from "./components/Cart/Cart.jsx";
 
 function App() {
+  const [isCartOpen, setIsCartOpen] = useState(false);
   const [dataFromServer, setDataFromServer] = useState([]);
   const [cartItems, setCartItems] = useState([]);
   const [itemSize, setItemSize] = useState("XS");
@@ -44,6 +45,8 @@ function App() {
                 setCartItems={setCartItems}
                 itemSize={itemSize}
                 setItemSize={setItemSize}
+                isCartOpen={isCartOpen}
+                setIsCartOpen={setIsCartOpen}
               />
             </div>
           </nav>
@@ -55,6 +58,8 @@ function App() {
               setCartItems={setCartItems}
               itemSize={itemSize}
               setItemSize={setItemSize}
+              isCartOpen={isCartOpen}
+                setIsCartOpen={setIsCartOpen}
             />
           </div>
         </div>
