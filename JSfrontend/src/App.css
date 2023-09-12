@@ -84,7 +84,7 @@ margin: 2% 4%;
 .description {
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  justify-content: space-between;
   gap: 0;
 }
 
@@ -252,6 +252,44 @@ margin-top: 50px;
   border-top: 2px solid black;
   border-bottom: 2px solid black;
 }
+
+/* loader component */
+
+.loader-container {
+  display: flex;
+  justify-content: center; /* Horizontally center content */
+  align-items: center; /* Vertically center content */
+  height: 100vh; /* Full viewport height */
+  width: 100vw;
+}
+
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: 50px;
+  aspect-ratio: 1;
+  display: grid;
+  border-radius: 50%;
+  background: conic-gradient(#25b09b 25%,#f03355 0 50%,#514b82 0 75%,#ffa516 0);
+  animation: l22 2s infinite linear;
+}
+.loader::before,
+.loader::after {
+   content: "";
+   grid-area: 1/1;
+   margin: 15%;
+   border-radius: 50%;
+   background: inherit;
+   animation: inherit;
+}
+.loader::after {
+   margin: 25%;
+   animation-duration: 3s;
+}
+@keyframes l22 {
+  100% {transform: rotate(1turn)}
+}
+
+
 
 
 

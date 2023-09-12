@@ -7,7 +7,7 @@ import Cart from "./components/Cart/Cart.jsx";
 function App() {
   const [dataFromServer, setDataFromServer] = useState([]);
   const [cartItems, setCartItems] = useState([]);
-  const [itemSize, setItemSize] = useState("");
+  const [itemSize, setItemSize] = useState("XS");
 
   console.log("Here it is:", dataFromServer);
   useEffect(() => {
@@ -29,24 +29,29 @@ function App() {
 
   return (
     <>
-      <div className="main-container">
-        <div className="customerDisplay">
-          <SearchBar
-            dataFromServer={dataFromServer}
-            cartItems={cartItems}
-            setCartItems={setCartItems}
-            itemSize={itemSize}
-            setItemSize={setItemSize}
-          />
-          <Cart
-            cartItems={cartItems}
-            setCartItems={setCartItems}
-            itemSize={itemSize}
-            setItemSize={setItemSize}
-          />
-          
+      {dataFromServer.length === 0 ? (
+        <div className="loader-container">
+          <div className="loader"></div>
         </div>
-      </div>
+      ) : (
+        <div className="main-container">
+          <div className="customerDisplay">
+            <SearchBar
+              dataFromServer={dataFromServer}
+              cartItems={cartItems}
+              setCartItems={setCartItems}
+              itemSize={itemSize}
+              setItemSize={setItemSize}
+            />
+            <Cart
+              cartItems={cartItems}
+              setCartItems={setCartItems}
+              itemSize={itemSize}
+              setItemSize={setItemSize}
+            />
+          </div>
+        </div>
+      )}
     </>
   );
 }
