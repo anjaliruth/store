@@ -20,6 +20,7 @@ body {
 .centered {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 58%;
   padding-top: 1%;
 }
@@ -337,5 +338,12 @@ margin-top: 50px;
   .cartList{
 right: 10%;
 width: 80%;
+  }
+  .centered{
+    width: 80%;
+  }
+
+  .appTitle{
+    font-size: 1.5rem;
   }
 }
