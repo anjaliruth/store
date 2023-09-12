@@ -38,18 +38,19 @@ function App() {
           <nav className="navBar">
             <div className="centered">
               <h1 className="appTitle">Tech Stacked</h1>
+
+              <Cart
+                cartItems={cartItems}
+                setCartItems={setCartItems}
+                itemSize={itemSize}
+                setItemSize={setItemSize}
+              />
             </div>
           </nav>
 
           <div className="customerDisplay">
             <SearchBar
               dataFromServer={dataFromServer}
-              cartItems={cartItems}
-              setCartItems={setCartItems}
-              itemSize={itemSize}
-              setItemSize={setItemSize}
-            />
-            <Cart
               cartItems={cartItems}
               setCartItems={setCartItems}
               itemSize={itemSize}
