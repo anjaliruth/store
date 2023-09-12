@@ -2,9 +2,38 @@ body {
   place-items: initial !important; /* Override the default alignment */
 }
 
+
+/* navBar */
+
+.navBar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: #242424;
+  width: 100vw;
+  display: flex; /* Use flexbox to center the content */
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  height: 60px; /* Adjust the height as needed */
+  padding: 10px 0;
+}
+
+.centered {
+
+  text-align: center;
+  width: 100%;
+}
+
+.appTitle {
+  /* Add your styles for the title here */
+  color: #fff; /* Example: Set the text color to white */
+}
+
+
 /* main-container component */
 .main-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -56,7 +85,7 @@ margin: 2% 4%;
 .cardButtonContainer {
   display: flex;
   justify-content: end;
-  background-color: aquamarine;
+
 }
 /* cartButtoncomponent */
 .cartButton {
@@ -66,6 +95,7 @@ margin: 2% 4%;
   gap: 0.2rem;
   margin: 1rem;
   padding: 0.2rem;
+  background-color: #242424;
 }
 
 /* cartItem component */

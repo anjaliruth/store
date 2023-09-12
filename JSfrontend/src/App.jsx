@@ -35,6 +35,12 @@ function App() {
         </div>
       ) : (
         <div className="main-container">
+          <nav className="navBar">
+            <div className="centered">
+              <h1 className="appTitle">Tech Stacked</h1>
+            </div>
+          </nav>
+
           <div className="customerDisplay">
             <SearchBar
               dataFromServer={dataFromServer}
