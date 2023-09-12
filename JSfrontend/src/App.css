@@ -17,6 +17,13 @@ body {
   width: 100%;
 }
 
+
+.cartTitle{
+color: black;
+margin: 2% 4%;
+
+}
+
 /* cart component container */
 .cart-container {
   position: fixed; /* or use "position: absolute;" depending on your layout needs */

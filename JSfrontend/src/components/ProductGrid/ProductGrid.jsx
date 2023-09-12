@@ -101,7 +101,6 @@ export default function ProductGrid({
               value={itemSize[item.id]}
               onChange={(e) => setItemSize(e.target.value)}
             >
-              <option value="Size">Size</option>
               <option value="XS">XS</option>
               <option value="S">S</option>
               <option value="M">M</option>
@@ -109,22 +108,13 @@ export default function ProductGrid({
             </select>
           </div>
           {getIndCartItemQuantity(item.id) === 0 ? (
-            itemSize === "" ? (
-              <button
-                className="addToCartButton disabled" // Add a CSS class for styling
-                disabled // Disable the button
-              >
-                + Add to Cart
-              </button>
-            ) : (
-              // Render the button as usual when a size is selected
-              <button
-                className="addToCartButton"
-                onClick={() => increaseCartQuantity(item.id, itemSize)}
-              >
-                + Add to Cart
-              </button>
-            )
+            // Render the button as usual when a size is selected
+            <button
+              className="addToCartButton"
+              onClick={() => increaseCartQuantity(item.id, itemSize)}
+            >
+              + Add to Cart
+            </button>
           ) : (
             <div className="quantityForCart">
               <div className="calculationInCart">
@@ -137,7 +127,7 @@ export default function ProductGrid({
                 <span>{getIndCartItemQuantity(item.id)}</span> in cart
                 <button
                   className="plusAmt"
-                  onClick={() => increaseCartQuantity(item.id,)}
+                  onClick={() => increaseCartQuantity(item.id)}
                 >
                   +
                 </button>

@@ -5,10 +5,6 @@ export default function Cart({ cartItems, setCartItems, itemSize }) {
   console.log("Cart Items:", cartItems);
   console.log("isCartOpen:", isCartOpen);
 
-  function deleteFromCart(item) {
-    setCartItems(cartItems.filter((cartItem) => cartItem.id !== item.id));
-  }
-
   const cartQuantity = cartItems.reduce((totalQuantity, item) => {
     const sizeQuantity = item.sizes.reduce((sizeTotal, sizeItem) => {
       return sizeTotal + sizeItem.quantity;
@@ -109,11 +105,14 @@ export default function Cart({ cartItems, setCartItems, itemSize }) {
 
       {isCartOpen && cartItems.length > 0 && (
         <div className="cartList">
+          <div>
+            <h1 className="cartTitle">Cart</h1>
+          </div>
           {/* flatMap flattens the nested structure */}
           {cartItems.flatMap((item) =>
             item.sizes.map((sizeItem) => (
               <div key={`${item.id}-${sizeItem.size}`} className="cartItem">
-                <img src={item.image} alt={item.name} className="imageInCart"/>
+                <img src={item.image} alt={item.name} className="imageInCart" />
                 <div className="description">
                   <h3 className="productNameInCart">{item.name}</h3>
                   <p className="itemSize">{sizeItem.size}</p>
@@ -135,7 +134,7 @@ export default function Cart({ cartItems, setCartItems, itemSize }) {
                   </div>
                 </div>
                 <div className="cartItemPrice">
-                <h3>£{item.price * sizeItem.quantity}</h3>
+                  <h3>£{item.price * sizeItem.quantity}</h3>
                 </div>
               </div>
             ))
@@ -143,13 +142,15 @@ export default function Cart({ cartItems, setCartItems, itemSize }) {
 
           {cartItems.length > 0 && (
             <div className="">
-            <div className="totalPrice">
-              <h2>Subtotal:</h2>
-              <h2> £{totalPrice}</h2>
-            </div>
-            <div className="">
-            <p className="taxes">Shipping, taxes & discounts calculated at checkout.</p>
-            </div>
+              <div className="totalPrice">
+                <h2>Subtotal:</h2>
+                <h2> £{totalPrice}</h2>
+              </div>
+              <div className="">
+                <p className="taxes">
+                  Shipping, taxes & discounts calculated at checkout.
+                </p>
+              </div>
             </div>
           )}
         </div>
