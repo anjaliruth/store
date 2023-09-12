@@ -106,7 +106,7 @@ export default function Cart({ cartItems, setCartItems, itemSize }) {
       {isCartOpen && cartItems.length > 0 && (
         <div className="cartList">
           <div>
-            <h1 className="cartTitle">Cart</h1>
+            <h2 className="cartTitle">Cart</h2>
           </div>
           {/* flatMap flattens the nested structure */}
           {cartItems.flatMap((item) =>
