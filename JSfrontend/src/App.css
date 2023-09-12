@@ -333,4 +333,9 @@ margin-top: 50px;
   .productGrid {
     grid-template-columns: repeat(1, 1fr);
   }
+
+  .cartList{
+right: 10%;
+width: 80%;
+  }
 }
