@@ -1,3 +1,5 @@
+import {useEffect} from "react"
+
 export default function ProductGrid({
   filteredItems,
   cartItems,
@@ -8,38 +10,49 @@ export default function ProductGrid({
   setIsCartOpen,
   isCartOpen,
 }) {
-  function getIndCartItemQuantity(id) {
-    return cartItems.find((item) => item.id === id)?.quantity || 0;
+
+  useEffect(() => {
+    // Load cart items from localStorage
+    const storedCartItems = localStorage.getItem('cartItems');
+    if (storedCartItems) {
+      setCartItems(JSON.parse(storedCartItems));
+    }
+  }, []);
+  
+  function updateCartInLocalStorage(cartItems) {
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
   }
-  console.log("size:", itemSize);
 
   function increaseCartQuantity(id, selectedSize) {
- 
     setCartItems((currItems) => {
       const existingCartItem = currItems.find((item) => item.id === id);
-
+  
       if (!existingCartItem) {
         // Find the item in the dataFromServer array
         const newItem = dataFromServer.find((item) => item.id === id);
         if (!newItem) {
           return currItems; // Item not found in dataFromServer
         }
-
+  
         // Add the new item to the cart with quantity 1 and the selected size
-        return [
+        const updatedCart = [
           ...currItems,
           { ...newItem, sizes: [{ size: selectedSize, quantity: 1 }] },
         ];
-        
+  
+        // Update cart in local storage
+        updateCartInLocalStorage(updatedCart);
+  
+        return updatedCart;
       } else {
         // Check if an item with the same size already exists in the cart
         const existingItemWithSize = existingCartItem.sizes.find(
           (sizeItem) => sizeItem.size === selectedSize
         );
-
+  
         if (!existingItemWithSize) {
           // Add a new size for the existing item
-          return currItems.map((item) => {
+          const updatedCart = currItems.map((item) => {
             if (item.id === id) {
               return {
                 ...item,
@@ -49,10 +62,14 @@ export default function ProductGrid({
               return item;
             }
           });
+  
+          // Update cart in local storage
+          updateCartInLocalStorage(updatedCart);
+  
+          return updatedCart;
         } else {
           // Increment quantity of existing item with the selected size
-          // Increment quantity of existing item with the selected size
-          return currItems.map((item) => {
+          const updatedCart = currItems.map((item) => {
             if (item.id === id) {
               const updatedSizes = item.sizes.map((sizeItem) =>
                 sizeItem.size === selectedSize
@@ -64,12 +81,19 @@ export default function ProductGrid({
               return item;
             }
           });
+  
+          // Update cart in local storage
+          updateCartInLocalStorage(updatedCart);
+  
+          return updatedCart;
         }
       }
     });
-    setIsCartOpen(true)
+  
+    setIsCartOpen(true);
     setTimeout(() => setIsCartOpen(false), 3000);
   }
+  
 
   console.log("Cart Items:", cartItems);
   return (
