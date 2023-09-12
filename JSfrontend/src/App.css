@@ -14,7 +14,7 @@ body {
   display: flex; /* Use flexbox to center the content */
   justify-content: flex-end; /* Center content horizontally */
   align-items: center; /* Center content vertically */
-  height: 60px; /* Adjust the height as needed */
+  height: 80px; /* Adjust the height as needed */
 }
 
 .centered {
@@ -72,14 +72,17 @@ margin: 2% 4%;
 
 /* cartList component */
 .cartList {
+  position: absolute;
+  top: 110%;
+  right: 1%;
   background-color: white;
-  border: 2px solid black;
+  border: 2px solid #242424;
   border-radius: 4px;
   padding: 0.5rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   max-height: 400px; /* Add a max height for scrolling if needed */
   overflow-y: auto; /* Add scrolling if the content exceeds the max height */
-  width: 115%;
+  width: 25%;
 }
 
 /* cardButton container */
