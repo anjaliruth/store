@@ -346,4 +346,7 @@ width: 80%;
   .appTitle{
     font-size: 1.5rem;
   }
+  .inputField{
+    width: 40%;
+  }
 }
