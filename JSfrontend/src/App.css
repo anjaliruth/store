@@ -116,6 +116,22 @@ margin: 2% 4%;
   background-color: white;
 }
 
+
+/* cartItemCount */
+.cartItemCount{
+  position: absolute;
+  top: 55%; /* Adjust the top position as needed */
+  right: 5px; /* Adjust the right position as needed */
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px; 
+}
 /* details in Cart */
 .description {
   display: flex;
