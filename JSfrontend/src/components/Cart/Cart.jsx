@@ -140,6 +140,7 @@ export default function Cart({
         <button
           className="cartButton"
           onClick={() => setIsCartOpen(!isCartOpen)}
+          style={{ display: cartQuantity > 0 ? 'flex' : 'none' }}
         >
           <span className="material-symbols-outlined">shopping_cart</span>
           <h3>{cartQuantity > 0 ? `(${cartQuantity})` : null}</h3>
