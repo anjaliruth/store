@@ -3,14 +3,42 @@ body {
 }
 
 
-/* main-container component */
-.main-container {
+/* navBar */
+
+.navBar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: #242424;
+  width: 100vw;
+  display: flex; /* Use flexbox to center the content */
+  justify-content: flex-end; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  height: 80px; /* Adjust the height as needed */
+}
+
+.centered {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  width: 58%;
+  padding-top: 1%;
+}
+
+.appTitle {
+  /* Add your styles for the title here */
+  color: #fff; /* Example: Set the text color to white */
+  font-size:2rem;
 }
 
 
+/* main-container component */
+.main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
 /* customerDisplay */
 .customerDisplay {
@@ -20,39 +48,46 @@ body {
   width: 100%;
 }
 
-/* cart component container */
-.cart-container {
-  position: fixed; /* or use "position: absolute;" depending on your layout needs */
-  top: 1%; /* Adjust the top position as needed */
-  right: 7%; /* Adjust the right position as needed */
-  width: 300px; /* Adjust the width as needed */
-  z-index: 100; /* Ensure it's above other content */
+
+.cartTitle{
+  font-size: 2rem;
+color: black;
+margin: 2% 4%;
+
 }
 
-.cartButton-container{
+/* cart component container */
+/* .cart-container {
+  position: fixed;
+  top: 0%; 
+  right: 7%; 
+  width: 300px; 
+  z-index: 100; 
+} */
+
+.cartButton-container {
   display: flex;
-  justify-content: flex-end
+  justify-content: flex-end;
+  padding: 0;
 }
 
 /* cartList component */
 .cartList {
+  position: absolute;
+  top: 110%;
+  right: 1%;
   background-color: white;
-  border: 2px solid black;
+  border: 2px solid #242424;
   border-radius: 4px;
   padding: 0.5rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   max-height: 400px; /* Add a max height for scrolling if needed */
   overflow-y: auto; /* Add scrolling if the content exceeds the max height */
-  width: 115%;
+  width: 25%;
 }
 
 /* cardButton container */
 
-.cardButtonContainer {
-  display: flex;
-  justify-content: end;
-  background-color: aquamarine;
-}
 /* cartButtoncomponent */
 .cartButton {
   display: flex;
@@ -61,13 +96,19 @@ body {
   gap: 0.2rem;
   margin: 1rem;
   padding: 0.2rem;
+  background-color: #242424;
 }
 
 
+.cartButton:hover{
+  background-color: #fff;
+  color: #242424;
+}
 /* cartItem component */
 .cartItem {
   display: flex;
   flex-direction: row;
+  justify-content: center;
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem;
@@ -75,13 +116,34 @@ body {
   background-color: white;
 }
 
+/* details in Cart */
+.description {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0;
+}
 
+.itemSize{
+padding: 0;
+padding-bottom: 2px;
+margin: 0;
+}
+
+
+.cartItemPrice{
+margin-top: 50px;
+}
+
+.taxes{
+  color: black;
+}
 /* deleteButton from cartComponent */
-.deleteButton{
-  padding: 0.5rem
+.deleteButton {
+  padding: 0.5rem;
 }
 .cartItem img {
-  width: 30%;
+  width: 40%;
   margin-right: 1rem;
 }
 
@@ -89,7 +151,7 @@ body {
 .productNameInCart {
   font-size: 1rem;
   font-weight: bold;
-  margin: 0.5rem 0;
+  margin: 0;
   width: 100%;
 }
 
@@ -107,7 +169,6 @@ body {
   background-color: white;
 }
 
-
 .productCard {
   display: flex;
   flex-direction: column;
@@ -116,12 +177,11 @@ body {
   border-radius: 3%;
   align-items: center;
   justify-self: center; /* Center horizontally within the grid cell */
-  align-self: center; 
+  align-self: center;
   width: 70%;
   padding: 0;
   padding-bottom: 5%;
 }
-
 
 /* productGrid component*/
 .productGrid {
@@ -130,7 +190,6 @@ body {
   gap: 1rem;
   width: 90%;
   margin: 0 auto;
-
 }
 /* items on productCard */
 
@@ -140,52 +199,54 @@ body {
   margin: 0.5rem 0;
 }
 
-.price{
+.price {
   padding: 0;
   margin: 0;
 }
 
-.addToCartButton{
-  padding-top:none;
+.addToCartButton {
+  padding-top: none;
   margin-top: none;
-  }
+}
 
-  .productCard img {
-    width: 70%;
-    border-radius: 3%;
-    margin-top: 15%;
-  }
+.disabled {
+  background-color: #ccc; /* Gray background */
+  color: #999; /* Gray text */
+  cursor: not-allowed; /* Change cursor to "not allowed" */
+}
 
+.productCard img {
+  width: 70%;
+  border-radius: 3%;
+  margin-top: 15%;
+}
 
-
-
-  /* quantityForCart component */
-.quantityForCart{
+/* quantityForCart component */
+.quantityForCart {
   display: flex;
   flex-direction: column;
   gap: 5px;
   align-items: center;
 }
-.removeButton{
+.removeButton {
   background-color: tomato;
 }
 
-.calculationInCart{
+.calculationInCart {
   display: flex;
   align-items: center;
-  gap: 5px
+  gap: 0;
+
+  height: 50%;
 }
-
-
-
 
 /* SearchBar Component */
 
-.inputField{
+.inputField {
   border-radius: 10px;
   padding: 10px;
-  border:none;
-  flex: 1
+  border: none;
+  flex: 1;
 }
 .inputField,
 .cart {
@@ -194,16 +255,103 @@ body {
   margin: 2rem auto;
 }
 
+/* buttons in Cart */
+.minusAmt,
+.plusAmt {
+  background-color: white;
+  color: black;
+  padding: 0.5rem;
+}
+
+.minusAmt {
+  border-left: 2px solid black;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  border-radius: 10px 0px 0 10px;
+}
+
+.minusAmt:hover,
+.plusAmt:hover {
+  background-color: black;
+  color: white;
+}
+.plusAmt {
+  border-right: 2px solid black;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  border-radius: 0 10px 10px 0;
+}
+
+.itemQuantity {
+  margin: 0;
+  padding: 5.5px 4px 6px 4px;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+}
+
+/* loader component */
+
+.loader-container {
+  display: flex;
+  justify-content: center; /* Horizontally center content */
+  align-items: center; /* Vertically center content */
+  height: 100vh; /* Full viewport height */
+  width: 100vw;
+}
+
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: 50px;
+  aspect-ratio: 1;
+  display: grid;
+  border-radius: 50%;
+  background: conic-gradient(#25b09b 25%,#f03355 0 50%,#514b82 0 75%,#ffa516 0);
+  animation: l22 2s infinite linear;
+}
+.loader::before,
+.loader::after {
+   content: "";
+   grid-area: 1/1;
+   margin: 15%;
+   border-radius: 50%;
+   background: inherit;
+   animation: inherit;
+}
+.loader::after {
+   margin: 25%;
+   animation-duration: 3s;
+}
+@keyframes l22 {
+  100% {transform: rotate(1turn)}
+}
+
+
+
+
+
 @media screen and (max-width: 768px) {
   .productGrid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
-  
+
 @media screen and (max-width: 500px) {
   .productGrid {
     grid-template-columns: repeat(1, 1fr);
+  }
 
+  .cartList{
+right: 10%;
+width: 80%;
+  }
+  .centered{
+    width: 80%;
+  }
+
+  .appTitle{
+    font-size: 1.5rem;
+  }
+  .inputField{
+    width: 40%;
   }
 }
-  

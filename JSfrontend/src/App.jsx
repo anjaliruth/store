@@ -5,8 +5,10 @@ import SearchBar from "./components/SearchBar/SearchBar.jsx";
 import Cart from "./components/Cart/Cart.jsx";
 
 function App() {
+  const [isCartOpen, setIsCartOpen] = useState(false);
   const [dataFromServer, setDataFromServer] = useState([]);
   const [cartItems, setCartItems] = useState([]);
+  const [itemSize, setItemSize] = useState("XS");
 
   console.log("Here it is:", dataFromServer);
   useEffect(() => {
@@ -28,19 +30,42 @@ function App() {
 
   return (
     <>
-      <div className="main-container">
-        <div className="customerDisplay">
-          <SearchBar
-            dataFromServer={dataFromServer}
-            cartItems={cartItems}
-            setCartItems={setCartItems}
-          />
-          <Cart cartItems={cartItems} setCartItems={setCartItems}  />
+      {dataFromServer.length === 0 ? (
+        <div className="loader-container">
+          <div className="loader"></div>
         </div>
-      </div>
+      ) : (
+        <div className="main-container">
+          <nav className="navBar">
+            <div className="centered">
+              <h1 className="appTitle">Tech Stacked</h1>
+
+              <Cart
+                cartItems={cartItems}
+                setCartItems={setCartItems}
+                itemSize={itemSize}
+                setItemSize={setItemSize}
+                isCartOpen={isCartOpen}
+                setIsCartOpen={setIsCartOpen}
+              />
+            </div>
+          </nav>
+
+          <div className="customerDisplay">
+            <SearchBar
+              dataFromServer={dataFromServer}
+              cartItems={cartItems}
+              setCartItems={setCartItems}
+              itemSize={itemSize}
+              setItemSize={setItemSize}
+              isCartOpen={isCartOpen}
+                setIsCartOpen={setIsCartOpen}
+            />
+          </div>
+        </div>
+      )}
     </>
   );
 }
-
 
 export default App;
