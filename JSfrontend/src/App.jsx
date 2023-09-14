@@ -28,6 +28,19 @@ function App() {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    // Load cart items from localStorage
+    const storedCartItems = localStorage.getItem('cartItems');
+    if (storedCartItems) {
+      setCartItems(JSON.parse(storedCartItems));
+    }
+  }, []);
+  
+  function updateCartInLocalStorage(cartItems) {
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  }
+
+
   return (
     <>
       {dataFromServer.length === 0 ? (
@@ -47,6 +60,7 @@ function App() {
                 setItemSize={setItemSize}
                 isCartOpen={isCartOpen}
                 setIsCartOpen={setIsCartOpen}
+                updateCartInLocalStorage={updateCartInLocalStorage}
               />
             </div>
           </nav>
@@ -60,6 +74,7 @@ function App() {
               setItemSize={setItemSize}
               isCartOpen={isCartOpen}
                 setIsCartOpen={setIsCartOpen}
+                updateCartInLocalStorage={updateCartInLocalStorage}
             />
           </div>
         </div>

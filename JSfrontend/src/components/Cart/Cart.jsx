@@ -1,7 +1,13 @@
 import { useState } from "react";
 
-export default function Cart({ cartItems, setCartItems, itemSize, setIsCartOpen, isCartOpen }) {
- 
+export default function Cart({
+  cartItems,
+  setCartItems,
+  itemSize,
+  setIsCartOpen,
+  isCartOpen,
+  updateCartInLocalStorage,
+}) {
   console.log("Cart Items:", cartItems);
   console.log("isCartOpen:", isCartOpen);
 
@@ -28,37 +34,66 @@ export default function Cart({ cartItems, setCartItems, itemSize, setIsCartOpen,
     setCartItems((currItems) => {
       const existingCartItem = currItems.find((item) => item.id === id);
 
-      // Check if an item with the same size already exists in the cart
-      const existingItemWithSize = existingCartItem.sizes.find(
-        (sizeItem) => sizeItem.size === selectedSize
-      );
+      if (!existingCartItem) {
+        // Find the item in the dataFromServer array
+        const newItem = dataFromServer.find((item) => item.id === id);
+        if (!newItem) {
+          return currItems; // Item not found in dataFromServer
+        }
 
-      if (!existingItemWithSize) {
-        // Add a new size for the existing item
-        return currItems.map((item) => {
-          if (item.id === id) {
-            return {
-              ...item,
-              sizes: [...item.sizes, { size: selectedSize, quantity: 1 }],
-            };
-          } else {
-            return item;
-          }
-        });
+        // Add the new item to the cart with quantity 1 and the selected size
+        const updatedCart = [
+          ...currItems,
+          { ...newItem, sizes: [{ size: selectedSize, quantity: 1 }] },
+        ];
+
+        // Update cart in local storage
+        updateCartInLocalStorage(updatedCart);
+
+        return updatedCart;
       } else {
-        // Increment quantity of existing item with the selected size
-        return currItems.map((item) => {
-          if (item.id === id) {
-            const updatedSizes = item.sizes.map((sizeItem) =>
-              sizeItem.size === selectedSize
-                ? { ...sizeItem, quantity: sizeItem.quantity + 1 }
-                : sizeItem
-            );
-            return { ...item, sizes: updatedSizes };
-          } else {
-            return item;
-          }
-        });
+        // Check if an item with the same size already exists in the cart
+        const existingItemWithSize = existingCartItem.sizes.find(
+          (sizeItem) => sizeItem.size === selectedSize
+        );
+
+        if (!existingItemWithSize) {
+          // Add a new size for the existing item
+          const updatedCart = currItems.map((item) => {
+            if (item.id === id) {
+              return {
+                ...item,
+                sizes: [...item.sizes, { size: selectedSize, quantity: 1 }],
+              };
+            } else {
+              return item;
+            }
+          });
+
+          // Update cart in local storage
+          updateCartInLocalStorage(updatedCart);
+
+          return updatedCart;
+        } else {
+          // Increment quantity of existing item with the selected size
+          const updatedCart = currItems.map((item) => {
+            if (item.id === id) {
+              const updatedSizes = item.sizes.map((sizeItem) =>
+                sizeItem.size === selectedSize
+                  ? { ...sizeItem, quantity: sizeItem.quantity + 1 }
+                  : sizeItem
+              );
+              return { ...item, sizes: updatedSizes };
+            } else {
+              return item;
+            }
+          });
+
+          // Update cart in local storage
+          updateCartInLocalStorage(updatedCart);
+
+          return updatedCart;
+        }
       }
     });
   }
@@ -73,10 +108,15 @@ export default function Cart({ cartItems, setCartItems, itemSize, setIsCartOpen,
       );
 
       if (existingItemWithSize.quantity === 1) {
-        return currItems.filter((item) => item.id !== id);
+        // Remove the item from cartItems
+        const updatedCartItems = currItems.filter((item) => item.id !== id);
+        // Update localStorage
+        updateCartInLocalStorage(updatedCartItems);
+        return updatedCartItems;
       } else {
-        return currItems.map((item) => {
-          if (item.id == id) {
+        // Decrease the quantity of the selected item
+        const updatedCartItems = currItems.map((item) => {
+          if (item.id === id) {
             const updatedSizes = item.sizes.map((sizeItem) =>
               sizeItem.size === selectedSize
                 ? { ...sizeItem, quantity: sizeItem.quantity - 1 }
@@ -87,6 +127,9 @@ export default function Cart({ cartItems, setCartItems, itemSize, setIsCartOpen,
             return item;
           }
         });
+        // Update localStorage
+        updateCartInLocalStorage(updatedCartItems);
+        return updatedCartItems;
       }
     });
   }
