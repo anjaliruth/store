@@ -17,6 +17,7 @@ client.connect(function(err) {
     console.log("Connected to PostgreSQL");
   }
 });
+app.use(cors())
 
 
 //get all items
@@ -40,6 +41,7 @@ app.get("/items", async (req, res) => {
 });
 
 app.use(express.json());
+
 
 app.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);
