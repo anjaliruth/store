@@ -8,6 +8,7 @@ export default function SearchBar({
   setItemSize,
   setIsCartOpen,
   isCartOpen,
+  updateCartInLocalStorage
 }) {
   const [filter, setFilter] = useState("");
   const [category, setCategory] = useState("");
@@ -49,6 +50,7 @@ export default function SearchBar({
         setItemSize={setItemSize}
         isCartOpen={isCartOpen}
         setIsCartOpen={setIsCartOpen}
+        updateCartInLocalStorage={updateCartInLocalStorage}
       />
     </div>
   );

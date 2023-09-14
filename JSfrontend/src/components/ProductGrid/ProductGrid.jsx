@@ -9,19 +9,9 @@ export default function ProductGrid({
   setItemSize,
   setIsCartOpen,
   isCartOpen,
+  updateCartInLocalStorage
 }) {
 
-  useEffect(() => {
-    // Load cart items from localStorage
-    const storedCartItems = localStorage.getItem('cartItems');
-    if (storedCartItems) {
-      setCartItems(JSON.parse(storedCartItems));
-    }
-  }, []);
-  
-  function updateCartInLocalStorage(cartItems) {
-    localStorage.setItem("cartItems", JSON.stringify(cartItems));
-  }
 
   function increaseCartQuantity(id, selectedSize) {
     setCartItems((currItems) => {
