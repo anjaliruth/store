@@ -255,6 +255,23 @@ margin-top: 50px;
   margin: 2rem auto;
 }
 
+/* category component */
+
+.category{
+  padding: 10px;
+  border: none;
+  border-radius:10px;
+}
+/* userInput component*/
+
+.userInput {
+  display: flex;
+  width: 30%;
+  margin: 0 auto;
+  align-items: center;
+  gap: 10px;
+}
+
 /* buttons in Cart */
 .minusAmt,
 .plusAmt {
